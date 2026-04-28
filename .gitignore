@@ -1,0 +1,4 @@
+be/data/
+be/.env
+fe/.env
+dist/
