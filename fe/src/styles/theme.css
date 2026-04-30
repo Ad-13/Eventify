@@ -3,6 +3,7 @@
 @theme {
   /* Colors */
   --color-vd-bg:      #120f1e;
+  --color-vd-border:  #a855f759;
   --color-vd-surface: #1c1730;
   --color-vd-raised:  #241e3a;
   --color-vd-accent:  #a855f7;
