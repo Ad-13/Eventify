@@ -1,12 +1,12 @@
 @layer components {
   .btn-accent {
-    @apply px-4 py-2 text-sm font-medium text-white
+    @apply px-4 py-2 font-medium text-white
            bg-vd-accent rounded-btn
            transition-opacity hover:opacity-90;
   }
 
   .btn-ghost {
-    @apply px-4 py-2 text-sm font-medium text-vd-muted
+    @apply px-4 py-2 font-medium text-vd-muted
            border border-[--vd-border2] rounded-btn bg-transparent
            transition-colors hover:text-vd-text;
   }
@@ -16,7 +16,7 @@
   }
 
   .field-input {
-    @apply w-full px-3 py-2 text-sm rounded-btn
+    @apply w-full px-3 py-2 rounded-btn
            bg-vd-raised border border-[--vd-border2]
            text-vd-text placeholder:text-vd-dim
            focus:border-vd-accent transition-colors;
