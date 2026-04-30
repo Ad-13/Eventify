@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { registerUser } from "../api/users";
+import { usersApi } from "../api/users";
 
 
 export default function SignUp() {
@@ -16,7 +16,7 @@ export default function SignUp() {
     setSuccessMsg(null);
     setLoading(true);
     try {
-      await registerUser({ email: email.trim(), password });
+      await usersApi.createUser({ email: email.trim(), password });
       setSuccessMsg("Account created. You can sign in next.");
       setEmail("");
       setPassword("");
