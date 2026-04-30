@@ -11,10 +11,12 @@ async function request(endpoint, options = {}) {
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
   }
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
-    ...options,
-    headers,
-  })
+  let response
+  try {
+    response = await fetch(`${BASE_URL}${endpoint}`, { ...options, headers })
+  } catch {
+    throw new Error('Network error — please check your connection')
+  }
 
   if (response.status === 204) return null
 

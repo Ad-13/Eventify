@@ -1,5 +1,5 @@
 import { api } from './client'
 
-export const authApi = {
+export const usersApi = {
   createUser: userData => api.post('/users', userData),
 }
