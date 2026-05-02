@@ -1,8 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import { Navbar } from './Navbar'
+import Navbar from './Navbar'
 
-// Wraps all routes — renders Navbar + the matched child route
-export function RootLayout() {
+const RootLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -12,3 +11,5 @@ export function RootLayout() {
     </div>
   )
 }
+
+export default RootLayout

@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-import { RootLayout } from '../components/layout/RootLayout'
 import { ProtectedRoute } from './ProtectedRoute'
-import { Home } from '../pages/Home'
-import { EventDetail } from '../pages/EventDetail'
+import RootLayout from '../components/layout/RootLayout'
+import Home from '../pages/Home'
+import EventDetail from '../pages/EventDetail'
+import CreateEvent from '../pages/CreateEvent'
+import NotFound from '../pages/NotFound'
 import SignUp from '../pages/SignUp'
 import SignIn from '../pages/SignIn'
-import { CreateEvent } from '../pages/CreateEvent'
-import { NotFound } from '../pages/NotFound'
 
 export function AppRoutes() {
   return (

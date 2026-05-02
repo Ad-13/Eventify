@@ -6,18 +6,19 @@ const SignIn = () => {
   const navigate = useNavigate()
   const login = useLogin()
 
-  const [formData, setFormData] = useState({ email: '', password: '' })
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-
-  const handleChange = e => setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
 
   const handleSubmit = async e => {
     e.preventDefault()
     setError(null)
     setLoading(true)
+    const { email, password } = e.target.elements
     try {
-      await login(formData)
+      await login({
+        email: email.value,
+        password: password.value
+      })
       navigate('/')
     } catch (err) {
       setError(err.message)
@@ -55,8 +56,6 @@ const SignIn = () => {
               autoComplete="email"
               required
               placeholder="you@example.com"
-              value={formData.email}
-              onChange={handleChange}
               className="field-input"
             />
           </div>
@@ -70,8 +69,6 @@ const SignIn = () => {
               autoComplete="current-password"
               required
               placeholder="••••••••"
-              value={formData.password}
-              onChange={handleChange}
               className="field-input"
             />
           </div>

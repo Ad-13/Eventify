@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuthState, useLogout } from '../../context/auth'
 
-export function Navbar() {
+const Navbar = () => {
   const { user } = useAuthState()
   const logout = useLogout()
 
@@ -51,3 +51,5 @@ export function Navbar() {
     </nav>
   )
 }
+
+export default Navbar
