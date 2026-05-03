@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { usersApi } from "../api/users";
 
 
-export default function SignUp() {
+export function SignUp() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -16,8 +17,13 @@ export default function SignUp() {
     setSuccessMsg(null);
     setLoading(true);
     try {
-      await usersApi.createUser({ email: email.trim(), password });
+      await usersApi.createUser({
+        name: name.trim(),
+        email: email.trim(),
+        password,
+      });
       setSuccessMsg("Account created. You can sign in next.");
+      setName("");
       setEmail("");
       setPassword("");
     } catch (err) {
@@ -38,6 +44,25 @@ export default function SignUp() {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="signup-name"
+              className="block text-sm text-vd-muted mb-1"
+            >
+              Name
+            </label>
+            <input
+              id="signup-name"
+              type="text"
+              autoComplete="name"
+              required
+              minLength={2}
+              maxLength={30}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full rounded-[var(--radius-btn)] bg-vd-raised border border-vd-dim px-3 py-2 text-vd-text placeholder:text-vd-dim focus:outline-none focus:ring-2 focus:ring-vd-accent"
+            />
+          </div>
           <div>
             <label
               htmlFor="signup-email"
