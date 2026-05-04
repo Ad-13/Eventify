@@ -1,5 +1,7 @@
 @layer base {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -16,7 +18,12 @@
     min-height: 100vh;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 500;
   }
@@ -31,8 +38,15 @@
     font-family: inherit;
   }
 
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-family: inherit;
     outline: none;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    color-scheme: dark;
   }
 }
