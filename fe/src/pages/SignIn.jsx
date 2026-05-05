@@ -4,10 +4,10 @@ import { useLogin } from '../context/auth'
 
 const SignIn = () => {
   const navigate = useNavigate()
-  const login    = useLogin()
+  const login = useLogin()
 
-  const [error,    setError]    = useState(null)
-  const [loading,  setLoading]  = useState(false)
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,16 +29,16 @@ const SignIn = () => {
 
   return (
     <div className="min-h-[calc(100vh-57px)] flex items-center justify-center px-4">
-      <div className="card w-full max-w-sm p-8">
+      <div className="card w-full max-w-sm p-8 animate-scale-in">
 
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-11 h-11 rounded-xl bg-vd-accent/15 border border-[--vd-border2]
+          <div className="w-11 h-11 rounded-xl bg-vd-accent/15 border border-vd-border2
                           flex items-center justify-center text-lg mx-auto mb-4">
             ◈
           </div>
           <h1 className="font-heading text-xl text-vd-text mb-1">Welcome back</h1>
-          <p className="text-xs text-vd-muted">Sign in to manage your events</p>
+          <p className=" text-vd-muted">Sign in to manage your events</p>
         </div>
 
         {/* Error */}
@@ -70,7 +70,7 @@ const SignIn = () => {
           </button>
         </form>
 
-        <p className="text-xs text-center text-vd-muted mt-6">
+        <p className=" text-center text-vd-muted mt-6">
           No account yet?{' '}
           <Link to="/signup" className="text-vd-accent2 hover:underline">Sign up</Link>
         </p>

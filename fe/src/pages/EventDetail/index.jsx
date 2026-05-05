@@ -43,7 +43,7 @@ const EventDetail = () => {
 
       <Link
         to="/"
-        className="inline-flex items-center gap-1.5 text-xs text-vd-muted
+        className="inline-flex items-center gap-1.5  text-vd-muted
                    hover:text-vd-text transition-colors mb-8"
       >
         ← Back to events
@@ -58,7 +58,7 @@ const EventDetail = () => {
                           text-5xl relative mb-6">
             🎵
             {category && (
-              <span className="absolute top-3 right-3 text-xs px-2.5 py-1 rounded-full
+              <span className="absolute top-3 right-3  px-2.5 py-1 rounded-full
                                bg-rose-500/20 text-vd-rose">
                 {category}
               </span>
@@ -73,7 +73,7 @@ const EventDetail = () => {
           </div>
 
           {description && (
-            <p className="text-sm text-vd-muted leading-relaxed mb-8">{description}</p>
+            <p className=" text-vd-muted leading-relaxed mb-8">{description}</p>
           )}
 
           {user ? (
@@ -92,14 +92,14 @@ const EventDetail = () => {
               Organiser
             </p>
             <div className="card flex items-center gap-3 p-4">
-              <div className="w-9 h-9 rounded-full bg-vd-accent/20 border border-[--vd-border2]
-                              flex items-center justify-center text-xs text-vd-accent2
+              <div className="w-9 h-9 rounded-full bg-vd-accent/20 border border-vd-border2
+                              flex items-center justify-center  text-vd-accent2
                               font-medium shrink-0">
                 {getInitials(organizer.name)}
               </div>
               <div>
-                <p className="text-sm font-medium text-vd-text">{organizer.name}</p>
-                <p className="text-xs text-vd-muted">{organizer.email}</p>
+                <p className=" font-medium text-vd-text">{organizer.name}</p>
+                <p className=" text-vd-muted">{organizer.email}</p>
               </div>
             </div>
           </div>

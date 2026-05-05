@@ -1,27 +1,43 @@
 export const CATEGORY_CONFIG = {
-  music: { emoji: '🎵', className: 'text-vd-rose  bg-rose-500/20' },
-  tech: { emoji: '💻', className: 'text-vd-blue  bg-blue-500/20' },
-  art: { emoji: '🎨', className: 'text-vd-green bg-emerald-500/20' },
-  sport: { emoji: '⚡', className: 'text-vd-blue  bg-blue-500/20' },
-  food: { emoji: '🍽', className: 'text-vd-rose  bg-rose-500/20' },
-  other: { emoji: '◈',  className: 'text-vd-muted bg-vd-raised' },
+  music: {
+    emoji:    '🎵',
+    badge:    'text-pink-300   bg-pink-500/20',
+    bar:      'bg-gradient-to-r from-pink-600/60  via-purple-600/40 to-transparent',
+  },
+  tech: {
+    emoji:    '💻',
+    badge:    'text-blue-300   bg-blue-500/20',
+    bar:      'bg-gradient-to-r from-blue-600/60  via-cyan-600/40   to-transparent',
+  },
+  art: {
+    emoji:    '🎨',
+    badge:    'text-emerald-300 bg-emerald-500/20',
+    bar:      'bg-gradient-to-r from-emerald-600/60 via-teal-600/40 to-transparent',
+  },
+  sport: {
+    emoji:    '⚡',
+    badge:    'text-amber-300  bg-amber-500/20',
+    bar:      'bg-gradient-to-r from-amber-600/60  via-orange-600/40 to-transparent',
+  },
+  food: {
+    emoji:    '🍽',
+    badge:    'text-orange-300 bg-orange-500/20',
+    bar:      'bg-gradient-to-r from-orange-600/60 via-red-600/40   to-transparent',
+  },
+  other: {
+    emoji:    '◈',
+    badge:    'text-vd-muted   bg-vd-raised',
+    bar:      'bg-gradient-to-r from-purple-700/40 via-vd-raised/60 to-transparent',
+  },
 }
 
-export const CARD_GRADIENTS = {
-  music: 'from-[#2d1b4e] to-vd-surface',
-  tech: 'from-[#1b2d4e] to-vd-surface',
-  art: 'from-[#1b4e2d] to-vd-surface',
-  sport: 'from-[#1b2d4e] to-vd-surface',
-  food: 'from-[#4e1b2d] to-vd-surface',
-  other: 'from-vd-raised to-vd-surface',
-}
-
-export const getCategoryConfig = category => {
+export const getConfig = (category) => {
   const key = category?.toLowerCase() ?? 'other'
   return CATEGORY_CONFIG[key] ?? CATEGORY_CONFIG.other
 }
 
-export const getGradient = category => {
-  const key = category?.toLowerCase() ?? 'other'
-  return CARD_GRADIENTS[key] ?? CARD_GRADIENTS.other
+export const getCapacityLabel = (capacity) => {
+  if (capacity == null) return { label: 'Free entry', dimmed: true  }
+  if (capacity === 0)   return { label: 'Sold out',   dimmed: false }
+  return { label: `${capacity} spots left`, dimmed: true }
 }

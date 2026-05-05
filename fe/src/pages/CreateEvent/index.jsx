@@ -139,7 +139,7 @@ const CreateEvent = () => {
         </div>
 
         <div className="lg:pt-14">
-          <p className="text-[10px] text-vd-dim uppercase tracking-widest mb-4">
+          <p className="text-[14px] text-vd-dim uppercase tracking-widest mb-4">
             Live preview
           </p>
           <EventPreview formData={formData} />

@@ -27,7 +27,7 @@ const EventPreview = ({ formData }) => {
         {emoji}
         {category && (
           <span className="absolute top-2.5 left-2.5 text-[10px] px-2 py-0.5
-                           rounded-full bg-vd-accent/20 border border-[--vd-border2]
+                           rounded-full bg-vd-accent/20 border border-vd-border2
                            text-vd-accent2">
             {category}
           </span>

@@ -17,7 +17,7 @@ const NotFound = () => {
           404
         </p>
 
-        <div className="w-12 h-12 rounded-xl bg-vd-accent/15 border border-[--vd-border2]
+        <div className="w-12 h-12 rounded-xl bg-vd-accent/15 border border-vd-border2
                         flex items-center justify-center text-xl mx-auto mb-6 -mt-6">
           ◈
         </div>

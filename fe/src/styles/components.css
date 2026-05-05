@@ -1,10 +1,9 @@
 @layer components {
-
   /* Buttons */
 
   .btn-accent {
     @apply inline-flex items-center justify-center
-           px-4 py-2 font-medium text-white text-sm
+           px-4 py-2 font-medium text-white 
            bg-vd-accent rounded-btn
            transition-all duration-200
            hover:opacity-90 hover:shadow-lg hover:shadow-vd-accent/20
@@ -14,8 +13,8 @@
 
   .btn-ghost {
     @apply inline-flex items-center justify-center
-           px-4 py-2 font-medium text-sm text-vd-muted
-           border border-[--vd-border2] rounded-btn bg-transparent
+           px-4 py-2 font-medium  text-vd-muted
+           border border-vd-border2 rounded-btn bg-transparent
            transition-all duration-200
            hover:text-vd-text hover:border-vd-accent/50 hover:bg-vd-accent/5
            active:scale-[0.98]
@@ -25,34 +24,34 @@
   /* Cards */
 
   .card {
-    @apply bg-vd-surface rounded-card border border-[--vd-border] overflow-hidden;
+    @apply bg-vd-surface rounded-card border border-vd-border overflow-hidden;
   }
 
   /* Form fields */
 
   .field-label {
-    @apply block text-xs font-medium text-vd-muted mb-1.5
+    @apply block font-medium text-vd-muted mb-1.5
            transition-colors duration-150;
   }
 
   .field-input {
-    @apply w-full px-3.5 py-2.5 text-sm rounded-btn
-           bg-vd-raised border border-[--vd-border]
+    @apply w-full px-3.5 py-2.5  rounded-btn
+           bg-vd-raised border border-vd-border
            text-vd-text placeholder:text-vd-dim
            outline-none ring-0
            transition-all duration-200
-           hover:border-[--vd-border2]
+           hover:border-vd-border2
            focus:border-vd-accent
            focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)];
   }
 
   .field-textarea {
-    @apply w-full px-3.5 py-2.5 text-sm rounded-btn
+    @apply w-full px-3.5 py-2.5  rounded-btn
            bg-vd-raised border border-[--vd-border]
            text-vd-text placeholder:text-vd-dim
            outline-none ring-0
            transition-all duration-200
-           hover:border-[--vd-border2]
+           hover:border-vd-border2
            focus:border-vd-accent
            focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)]
            resize-none leading-relaxed;
@@ -63,18 +62,18 @@
   }
 
   .field-error {
-    @apply text-xs text-vd-rose mt-1;
+    @apply text-vd-rose mt-1;
   }
 
   /* Alerts */
 
   .alert-info {
-    @apply flex items-center gap-2.5 px-4 py-3 rounded-lg text-sm
-           bg-vd-accent/10 border border-[--vd-border2] text-vd-accent2;
+    @apply flex items-center gap-2.5 px-4 py-3 rounded-lg 
+           bg-vd-accent/10 border border-vd-border2 text-vd-accent2;
   }
 
   .alert-error {
-    @apply flex items-center gap-2.5 px-4 py-3 rounded-lg text-sm
+    @apply flex items-center gap-2.5 px-4 py-3 rounded-lg 
            bg-vd-rose/10 border border-vd-rose/30 text-vd-rose;
   }
 }
