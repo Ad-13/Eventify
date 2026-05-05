@@ -2,3 +2,5 @@ be/data/
 be/.env
 fe/.env
 dist/
+fe/node_modules/
+be

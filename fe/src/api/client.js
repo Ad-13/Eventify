@@ -1,6 +1,6 @@
 import { storage } from "./storage";
 
-const BASE_URL = "http://localhost:5173/api";
+const BASE_URL = "/api";
 
 async function request(endpoint, options = {}) {
   const token = storage.getToken();
@@ -29,7 +29,7 @@ async function request(endpoint, options = {}) {
 
   if (!response.ok) {
     throw new Error(
-      data.message ?? `HTTP ${response.status} ${response.statusText}`,
+      data.error ?? data.message ?? `HTTP ${response.status} ${response.statusText}`,
     );
   }
 
@@ -38,9 +38,10 @@ async function request(endpoint, options = {}) {
 
 export const api = {
   get: (endpoint, options) => request(endpoint, { ...options, method: "GET" }),
-  post: (endpoint, options) =>
-    request(endpoint, { ...options, method: "POST" }),
-  put: (endpoint, options) => request(endpoint, { ...options, method: "PUT" }),
+  post: (endpoint, data, options) =>
+    request(endpoint, { ...options, method: "POST", body: JSON.stringify(data) }),
+  put: (endpoint, data, options) =>
+    request(endpoint, { ...options, method: "PUT", body: JSON.stringify(data) }),
   delete: (endpoint, options) =>
     request(endpoint, { ...options, method: "DELETE" }),
 };
