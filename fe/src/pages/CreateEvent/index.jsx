@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { eventsApi } from '../../api/events'
 import { useAuthState } from '../../context/auth'
-import { EventPreview } from './EventPreview'
+import EventPreview from './EventPreview'
 
 const CreateEvent = () => {
   const navigate = useNavigate()

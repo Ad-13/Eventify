@@ -1,6 +1,6 @@
 @layer components {
 
-  /* Buttons  */
+  /* Buttons */
 
   .btn-accent {
     @apply inline-flex items-center justify-center
@@ -41,18 +41,21 @@
            text-vd-text placeholder:text-vd-dim
            outline-none ring-0
            transition-all duration-200
-
            hover:border-[--vd-border2]
-
            focus:border-vd-accent
-           focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)]
-
-           [&:not(:placeholder-shown):invalid]:border-vd-rose
-           [&:not(:placeholder-shown):invalid]:shadow-[0_0_0_3px_rgba(244,114,182,0.12)];
+           focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)];
   }
 
   .field-textarea {
-    @apply field-input resize-none leading-relaxed;
+    @apply w-full px-3.5 py-2.5 text-sm rounded-btn
+           bg-vd-raised border border-[--vd-border]
+           text-vd-text placeholder:text-vd-dim
+           outline-none ring-0
+           transition-all duration-200
+           hover:border-[--vd-border2]
+           focus:border-vd-accent
+           focus:shadow-[0_0_0_3px_rgba(168,85,247,0.15)]
+           resize-none leading-relaxed;
   }
 
   .field-group {
@@ -63,11 +66,11 @@
     @apply text-xs text-vd-rose mt-1;
   }
 
-  /* Alert / notice */
+  /* Alerts */
 
   .alert-info {
     @apply flex items-center gap-2.5 px-4 py-3 rounded-lg text-sm
-           bg-vd-accent/8 border border-[--vd-border2] text-vd-accent2;
+           bg-vd-accent/10 border border-[--vd-border2] text-vd-accent2;
   }
 
   .alert-error {

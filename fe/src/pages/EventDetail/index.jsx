@@ -4,17 +4,19 @@ import { eventsApi } from '../../api/events'
 import { useAuthState } from '../../context/auth'
 import { formatDateLong } from '../../utils/date'
 import { getInitials } from '../../utils/string'
-import { PageState } from '../../components/ui/PageState'
-import { Spinner } from '../../components/ui/Spinner'
-import { MetaItem } from './MetaItem'
+import PageState from '../../components/ui/PageState'
+import Spinner from '../../components/ui/Spinner'
+import MetaItem from './MetaItem'
 
 const EventDetail = () => {
-  const { id }   = useParams()
+  console.log(45465);
+
+  const { id } = useParams()
   const { user } = useAuthState()
 
-  const [event,   setEvent]   = useState(null)
+  const [event, setEvent] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [error,   setError]   = useState(null)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const load = async () => {
@@ -31,8 +33,8 @@ const EventDetail = () => {
   }, [id])
 
   if (loading) return <Spinner text="Loading event…" />
-  if (error)   return <PageState type="error" message={error} />
-  if (!event)  return null
+  if (error) return <PageState type="error" message={error} />
+  if (!event) return null
 
   const { title, description, date, location, category, organizer } = event
 

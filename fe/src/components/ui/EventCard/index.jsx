@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { formatDateShort } from '../../../utils/date'
 import { getCategoryConfig, getGradient } from './helper'
+import { formatDateShort } from '../../../utils/date'
 
 const EventCard = ({ event }) => {
   const { id, title, date, location, category } = event
@@ -15,8 +15,8 @@ const EventCard = ({ event }) => {
                  hover:shadow-vd-accent/5 transition-all duration-200"
     >
       {/* Banner */}
-      <div className={`h-16 bg-linear-to-br ${gradient}
-                       flex items-center justify-center text-2xl relative`}>
+      <div className={`h-20 bg-gradient-to-br ${gradient}
+                       flex items-center justify-center text-3xl relative`}>
         {cat.emoji}
         {category && (
           <span className={`absolute top-2 left-2 text-[10px] px-2 py-0.5
@@ -27,8 +27,8 @@ const EventCard = ({ event }) => {
       </div>
 
       {/* Body */}
-      <div className="p-3 flex flex-col flex-1">
-        <p className="text-[10px] text-vd-accent2 font-medium tracking-wide mb-1">
+      <div className="p-3.5 flex flex-col flex-1">
+        <p className="text-[10px] text-vd-accent2 font-medium tracking-wide mb-1.5 uppercase">
           {formatDateShort(date)}
         </p>
         <h3 className="text-sm font-medium text-vd-text mb-1
@@ -36,12 +36,15 @@ const EventCard = ({ event }) => {
                        group-hover:text-vd-accent2 transition-colors">
           {title}
         </h3>
-        <p className="text-[10px] text-vd-muted mb-3">📍 {location}</p>
+        <p className="text-[10px] text-vd-muted mb-4">
+          📍 {location}
+        </p>
 
-        <div className="mt-auto flex items-center justify-end">
+        <div className="mt-auto flex items-center justify-between">
           <span className="text-[10px] px-2 py-1 rounded-md
                            bg-vd-accent/10 border border-[--vd-border2]
-                           text-vd-accent2">
+                           text-vd-accent2 group-hover:bg-vd-accent/20
+                           transition-colors">
             View →
           </span>
         </div>
