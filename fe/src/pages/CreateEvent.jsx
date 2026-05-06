@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { eventsApi } from "../api/events";
 
-export function CreateEvent() {
+function CreateEvent() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -40,7 +40,7 @@ export function CreateEvent() {
 
       const createdEvent = await eventsApi.create(payload);
       console.log("Event created:", createdEvent);
-      navigate("/events/upcoming");
+      navigate("/");
     } catch (err) {
       setError(err.message || "Failed to create event");
     } finally {
@@ -134,3 +134,5 @@ export function CreateEvent() {
     </div>
   );
 }
+
+export default CreateEvent;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthState } from "../context/auth";
 
-export function UpcomingEvents() {
+function UpcomingEvents() {
     const { user } = useAuthState();
 
     return (
@@ -33,3 +33,5 @@ export function UpcomingEvents() {
         </div>
     );
 }
+
+export default UpcomingEvents;

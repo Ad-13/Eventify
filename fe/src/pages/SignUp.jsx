@@ -34,9 +34,9 @@ export function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 font-[family-name:var(--font-body)]">
-      <div className="w-full max-w-sm rounded-[var(--radius-card)] bg-vd-surface border border-vd-raised p-6 shadow-lg">
-        <h1 className="font-[family-name:var(--font-heading)] text-2xl text-vd-text mb-1">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 font-body">
+      <div className="w-full max-w-sm rounded-card bg-vd-surface border border-vd-raised p-6 shadow-lg">
+        <h1 className="font-heading text-2xl text-vd-text mb-1">
           Sign up
         </h1>
         <p className="text-sm text-vd-muted mb-6">
@@ -60,7 +60,7 @@ export function SignUp() {
               maxLength={30}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-[var(--radius-btn)] bg-vd-raised border border-vd-dim px-3 py-2 text-vd-text placeholder:text-vd-dim focus:outline-none focus:ring-2 focus:ring-vd-accent"
+              className="field-input"
             />
           </div>
           <div>
@@ -77,7 +77,7 @@ export function SignUp() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-[var(--radius-btn)] bg-vd-raised border border-vd-dim px-3 py-2 text-vd-text placeholder:text-vd-dim focus:outline-none focus:ring-2 focus:ring-vd-accent"
+              className="field-input"
             />
           </div>
           <div>
@@ -95,7 +95,7 @@ export function SignUp() {
               minLength={8}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-[var(--radius-btn)] bg-vd-raised border border-vd-dim px-3 py-2 text-vd-text placeholder:text-vd-dim focus:outline-none focus:ring-2 focus:ring-vd-accent"
+              className="field-input"
             />
           </div>
 
@@ -113,7 +113,7 @@ export function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-[var(--radius-btn)] bg-vd-accent text-vd-bg font-medium py-2.5 hover:opacity-90 disabled:opacity-50"
+            className="w-full rounded-(--radius-btn) bg-vd-accent text-vd-bg font-medium py-2.5 hover:opacity-90 disabled:opacity-50"
           >
             {loading ? "Creating account…" : "Create account"}
           </button>
@@ -128,3 +128,5 @@ export function SignUp() {
     </div>
   );
 }
+
+export default SignUp

@@ -1,47 +1,44 @@
-import { storage } from "./storage";
+import { storage } from './storage'
 
-const BASE_URL = "/api";
+const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080/api'
 
 async function request(endpoint, options = {}) {
-  const token = storage.getToken();
+  const token = storage.getToken()
 
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
     ...options.headers,
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
-  };
-
-  let response;
-  try {
-    response = await fetch(`${BASE_URL}${endpoint}`, {
-      ...options,
-      headers,
-    });
-  } catch (error) {
-    throw new Error("Failed to fetch resource", {
-      cause: error,
-    });
   }
 
-  if (response.status === 204) return null;
+  let response
+  try {
+    response = await fetch(`${BASE_URL}${endpoint}`, { ...options, headers })
+  } catch {
+    throw new Error('Network error — please check your connection')
+  }
 
-  const data = await response.json();
+  if (response.status === 204) return null
+
+  const data = await response.json()
 
   if (!response.ok) {
-    throw new Error(
-      data.error ?? data.message ?? `HTTP ${response.status} ${response.statusText}`,
-    );
+    throw new Error(data.message ?? `HTTP ${response.status}`)
   }
 
-  return data;
+  return data
 }
 
 export const api = {
-  get: (endpoint, options) => request(endpoint, { ...options, method: "GET" }),
-  post: (endpoint, data, options) =>
-    request(endpoint, { ...options, method: "POST", body: JSON.stringify(data) }),
-  put: (endpoint, data, options) =>
-    request(endpoint, { ...options, method: "PUT", body: JSON.stringify(data) }),
-  delete: (endpoint, options) =>
-    request(endpoint, { ...options, method: "DELETE" }),
-};
+  get: (endpoint, options = {}) =>
+    request(endpoint, { ...options, method: 'GET' }),
+
+  post: (endpoint, body, options = {}) =>
+    request(endpoint, { ...options, method: 'POST', body: JSON.stringify(body) }),
+
+  put: (endpoint, body, options = {}) =>
+    request(endpoint, { ...options, method: 'PUT', body: JSON.stringify(body) }),
+
+  delete: (endpoint, options = {}) =>
+    request(endpoint, { ...options, method: 'DELETE' }),
+}
