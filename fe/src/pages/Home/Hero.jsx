@@ -1,6 +1,4 @@
 const Hero = ({ search, onSearch }) => {
-  const handleSubmit = (e) => e.preventDefault()
-
   return (
     <div className="relative text-center py-16 px-6 mb-8 animate-fade-in">
 
@@ -28,8 +26,7 @@ const Hero = ({ search, onSearch }) => {
         Browse concerts, meetups, workshops and more — all in one place.
       </p>
 
-      <form
-        onSubmit={handleSubmit}
+      <div
         className="flex gap-2 max-w-lg mx-auto mb-8 animate-fade-up"
         style={{ animationDelay: '0.25s' }}
       >
@@ -37,13 +34,10 @@ const Hero = ({ search, onSearch }) => {
           type="search"
           value={search}
           onChange={e => onSearch(e.target.value)}
-          placeholder="Search events, cities, categories…"
-          className="field-input flex-1"
+          placeholder="Search events"
+          className="field-input pl-9 w-full"
         />
-        <button type="submit" className="btn-accent px-5 shrink-0">
-          Search →
-        </button>
-      </form>
+      </div>
     </div>
   )
 }

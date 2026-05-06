@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { eventsApi } from "../api/events";
 
 function CreateEvent() {
@@ -57,6 +57,14 @@ function CreateEvent() {
           {error}
         </div>
       )}
+
+      <Link
+        to="/"
+        className="inline-flex items-center gap-1.5  text-vd-muted
+                   hover:text-vd-text transition-colors mb-8"
+      >
+        ← Back to events
+      </Link>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>

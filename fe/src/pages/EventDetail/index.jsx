@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { eventsApi } from '../../api/events'
 import { useAuthState } from '../../context/auth'
 import { formatDateLong } from '../../utils/date'
-import { getInitials } from '../../utils/string'
 import PageState from '../../components/ui/PageState'
 import Spinner from '../../components/ui/Spinner'
 import MetaItem from './MetaItem'
 
 const EventDetail = () => {
-  console.log(45465);
+  const navigate = useNavigate()
 
   const { id } = useParams()
   const { user } = useAuthState()
@@ -17,6 +16,18 @@ const EventDetail = () => {
   const [event, setEvent] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [deleting, setDeleting] = useState(false)
+
+  const handleDelete = async () => {
+    setDeleting(true)
+    try {
+      await eventsApi.delete(id)
+      navigate('/')
+    } catch (err) {
+      setError(err.message)
+      setDeleting(false)
+    }
+  }
 
   useEffect(() => {
     const load = async () => {
@@ -36,7 +47,7 @@ const EventDetail = () => {
   if (error) return <PageState type="error" message={error} />
   if (!event) return null
 
-  const { title, description, date, location, category, organizer } = event
+  const { title, description, date, location, category } = event
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10">
@@ -77,34 +88,26 @@ const EventDetail = () => {
           )}
 
           {user ? (
-            <button className="btn-accent w-full py-3">Register for this event</button>
+            <>
+              <button className="btn-accent w-full py-3 mb-3.5">Register for this event</button>
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="w-full py-2.5 rounded-btn text-sm font-medium
+                           border border-vd-rose/40 text-vd-rose
+                           hover:bg-vd-rose/10 hover:border-vd-rose/70
+                           active:scale-[0.98] transition-all duration-200
+                           disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {deleting ? 'Deleting…' : 'Delete event'}
+              </button>
+            </>
           ) : (
             <Link to="/signin" className="btn-accent w-full py-3 text-center block">
               Sign in to register
             </Link>
           )}
         </div>
-
-        {/* Right */}
-        {organizer && (
-          <div>
-            <p className="text-[10px] text-vd-dim uppercase tracking-widest mb-3">
-              Organiser
-            </p>
-            <div className="card flex items-center gap-3 p-4">
-              <div className="w-9 h-9 rounded-full bg-vd-accent/20 border border-vd-border2
-                              flex items-center justify-center  text-vd-accent2
-                              font-medium shrink-0">
-                {getInitials(organizer.name)}
-              </div>
-              <div>
-                <p className=" font-medium text-vd-text">{organizer.name}</p>
-                <p className=" text-vd-muted">{organizer.email}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
       </div>
     </div>
   )

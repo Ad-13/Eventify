@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuthState, useLogout } from '../../context/auth'
 
 const Navbar = () => {
@@ -25,19 +25,6 @@ const Navbar = () => {
         </span>
       </Link>
 
-      {/* Center nav */}
-      <div className="flex items-center gap-6 ">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? 'text-vd-text font-medium'
-              : 'text-vd-muted hover:text-vd-text transition-colors duration-200'
-          }
-        >
-          Events
-        </NavLink>
-      </div>
 
       {/* Auth actions */}
       <div className="flex items-center gap-3 shrink-0">

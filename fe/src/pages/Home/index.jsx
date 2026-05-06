@@ -27,6 +27,10 @@ const Home = () => {
   if (loading) return <PageState type="loading" />
   if (error) return <PageState type="error" message={error} />
 
+  const filtered = search === '' ? events : events.filter(e =>
+      e.title?.toLowerCase().includes(search.toLowerCase())
+    )
+
   return (
     <div>
       <Hero
@@ -35,7 +39,7 @@ const Home = () => {
       />
 
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        {events.length === 0
+        {filtered.length === 0
           ? (
             <PageState
               type="empty"
@@ -46,7 +50,7 @@ const Home = () => {
             />
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
-              {events.map(event => <EventCard key={event.id} event={event} />)}
+              {filtered.map(event => <EventCard key={event.id} event={event} />)}
             </div>
           )
         }

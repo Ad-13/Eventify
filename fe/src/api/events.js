@@ -5,4 +5,5 @@ export const eventsApi = {
   getById: (id) => api.get(`/events/${id}`),
   getUpcoming: () => api.get("/events/upcoming"),
   create: (eventData) => api.post("/events", eventData),
+  delete: (id) => api.delete(`/events/${id}`),
 };
